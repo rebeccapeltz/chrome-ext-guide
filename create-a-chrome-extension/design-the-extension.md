@@ -75,7 +75,9 @@ The `action` The key names the HTML file that will pop up when the extension ico
 
 The manifest has named two files:  `content.js` and `popup.html`.  The HTML file will need JavaScript to turn the data received from the content script into the DOM element that makes up the report.  This JavaScript can be included in the HTML or linked to another file.  Link Reveal will use a separate `popup.js` file to hold the code that turns the data from the user web page into a report rendered in `popup.html`.
 
-The sequence diagram below shows the flow that is carried out when the user clicks on the icon.
+The sequence diagram below shows the flow that is carried out when the user clicks on the icon. &#x20;
+
+The HTML document is alerted that the DOM Content has been loaded.  The `popup.js` code requests from `content.js` to get the information about links from the current page.  The request includes the name of the function `setDOMInfo` in `popup.js` that will be used to return data from the content script to the action script. The content page executes a `document.getElementsByTagName("a")` to retrieve all the anchor tags.  This information is turned into an array of objects that summarize the attributes of the links found.  The `setDOMInfo` function creates the HTML to construct the report rendered in `popup.html`.
 
 ```mermaid
 sequenceDiagram
@@ -88,8 +90,7 @@ sequenceDiagram
     loop Process DOM Info 
         popup.js-->popup.js: Process DOM data from user page
     end
-    popup.js->>popup.html: Build Report   
-
+    popup.js->>popup.html: Build Report  
 ```
 
 
