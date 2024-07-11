@@ -1,3 +1,10 @@
+---
+description: >-
+  A Chrome extension named Link Reveal will provide the user a report of all the
+  links and their underlying attributes.  It will also provide some red and
+  green buttons to indicate possible issues.
+---
+
 # Design the Extension
 
 ### Chrome Manifest
@@ -54,13 +61,21 @@ The `permissions` key provides information on how permissions are granted to the
 
 The `content_scripts` are files with code that will access the user's web page.  Any code in a content script will be injected into the web that the user is currently viewing.  If an extension needs to access the DOM of the current web page, this code will be located in a content script.
 
-The `matches` key in `content_scripts` references an array that lists what URLs can take the content script injection.  In this case, `"<all_urls>"` indicates that this content script can be injected into any URL.   This is a broad permission.  Chrome will accept a link to a Security Policy that states what data will be extracted from the page and how it will be used.  The Security Policy will help to get the extension published quickly.
+The `matches` key in `content_scripts` references an array that lists what URLs can take the content script injection.  In this case,  the value`"<all_urls>"` indicates that this content script can be injected into any URL.   This is a broad permission.  Chrome will accept a link to a Security Policy that states what data will be extracted from the page and how it will be used.  The Security Policy will help to get the extension published quickly.
+
+The `js` key specifies the file name containing the code that will be injected into the web page to extract data.  The name of the file is `content.js`.
+
+The `all_frames` key indicates using `true` or `false` whether the code can be injected into all frames on a web page.  Only frame 0 will be processed for **Link Reveal** if multiple frames are on the web page.
 
 ### Action
 
 The `action` The key names the HTML file that will pop up when the extension icon is clicked.  In this case, the name of the file is `popup.html`.  The default icons are specified and the same as those listed by the icon key.
 
 ### Data Flow
+
+The manifest has named two files:  `content.js` and `popup.html`.  The HTML file will need JavaScript to turn the data received from the content script into the DOM element that makes up the report.  This JavaScript can be included in the HTML or linked to another file.  Link Reveal will use a separate `popup.js` file to hold the code that turns the data from the user web page into a report rendered in `popup.html`.
+
+
 
 
 
