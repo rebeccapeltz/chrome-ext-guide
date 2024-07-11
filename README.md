@@ -47,4 +47,3 @@ In the anchor tag above, the URL referenced by the `href` attribute looks valid.
 
 In this guide, we'll develop a Chrome extension that pops up a report showing information about each link on a web page. The next sections will describe the extension's creation and how to publish it to the Chrome Web Store.
 
-###
