@@ -9,9 +9,9 @@ Browser extensions are software programs that can be added to a browser to intro
 * [Firefox](https://addons.mozilla.org/en-US/firefox/)
 * [Safari](https://apps.apple.com/us/story/id1377753262)
 
-Browser extensions provide different ways to access a web page's contents and local storage.  This makes them a potential security threat, but they can also be used to help mitigate some security issues.
+Browser extensions provide different ways to access a web page's contents and local storage. This makes them a potential security threat, but they can also help mitigate some security issues.
 
-The instructions in this guide will walk through identifying and solving a problem using a Chrome extension.
+The instructions in this guide will walk you through identifying and solving a problem using a Chrome extension.
 
 ### Use Cases for Browser Extension
 
@@ -23,6 +23,28 @@ If you look through the many extensions that have been published, you'll find th
 * Proofreading
 * Shopping Deals and Product Finders
 
-### Creating and Publishing the "Link Reveal" Chrome Extension
+### Identifying a Problem
 
-This guide is intended to&#x20;
+A browser extension can serve as a solution to a problem.  Looking at the use cases above, we can identify some problems that browser users have come across:
+
+* How can I block ads?
+* I need a tool to help manage my passwords.
+* I need a tool to track SEO analytics on my web pages.
+* I need help proofreading the content I write on the web.
+* Where can I buy an item I want to purchase at a discount?
+
+This guide will focus on creating a browser extension that helps mitigate phishing. Phishing is a cybersecurity threat that occurs when a user clicks on a link, leading to malware installation. Companies often have programs to make users more vigilant about phishing. For example, they can educate their employees about phishing and ask them to hover over links to ensure the underlying URL looks valid. &#x20;
+
+When you familiarize yourself with all of the attributes available in a web page link, you realize that just hovering over a link to see the URL is not enough to know what might happen once you click on it.
+
+```markup
+<div><a href="https://www.example.com" target="_blank"
+    onclick="alert('my href is unencrypted but chrome will make it secure - try http://info.cern.ch/ a browser without https applied'); return true;">Unencrypted!!</a>
+</div>
+```
+
+In the anchor tag above, the URL referenced by the `href` attribute looks valid. However, clicking on the link will cause the onclick event handler to execute some JavaScript, and the user won't navigate to the URL until the JavaScript code execution is complete. This could not be detected by just hovering over the link on the web page.
+
+In this guide, we'll develop a Chrome extension that pops up a report showing information about each link on a web page. The next sections will describe the extension's creation and how to publish it to the Chrome Web Store.
+
+###
