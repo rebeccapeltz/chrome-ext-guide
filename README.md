@@ -11,7 +11,7 @@ Browser extensions are software programs that can be added to a browser to intro
 
 Browser extensions provide different ways to access a web page's contents and local storage. This makes them a potential security threat, but they can also help mitigate some security issues.
 
-The instructions in this guide will walk you through identifying and solving a problem using a Chrome extension.
+The instructions in this guide will walk through identifying and solving a problem using a Chrome extension.
 
 ### Use Cases for Browser Extension
 
@@ -45,5 +45,5 @@ When you familiarize yourself with all of the attributes available in a web page
 
 In the anchor tag above, the URL referenced by the `href` attribute looks valid. However, clicking on the link will cause the onclick event handler to execute some JavaScript, and the user won't navigate to the URL until the JavaScript code execution is complete. This could not be detected by just hovering over the link on the web page.
 
-In this guide, we'll develop a Chrome extension that pops up a report showing information about each link on a web page. The next sections will describe the extension's creation and how to publish it to the Chrome Web Store.
+In this guide, we'll develop a Chrome extension that pops up a report showing information about each link on a web page. The following sections will describe the extension's creation and how to publish it to the Chrome Web Store.
 
