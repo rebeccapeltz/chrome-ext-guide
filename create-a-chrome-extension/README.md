@@ -1,7 +1,7 @@
 ---
 description: >-
-  The **LInk Reveal** extension is shown below. Click on an icon to view a
-  report than reveals links with analysis of their attributes.
+  The LInk Reveal extension is shown below. Click on an icon to view a report
+  that reveals links and analyzes their attributes.
 ---
 
 # Create a Chrome Extension
