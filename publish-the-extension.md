@@ -9,7 +9,9 @@ description: >-
 
 ### Chrome Developer Console
 
-You must set up an account and access the Google Developer Console to publish an extension.
+You must set up an account and access the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/) to publish an extension.
+
+<figure><img src=".gitbook/assets/chromedevdashboard.png" alt=""><figcaption><p>Chrome Developer Dashboard with entry for Extension</p></figcaption></figure>
 
 ### Prepare Images for Chrome Web Store Listing
 
