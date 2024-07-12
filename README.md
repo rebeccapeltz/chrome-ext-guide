@@ -6,8 +6,6 @@ description: >-
 
 # Introduction
 
-<figure><img src=".gitbook/assets/link-report.gif" alt=""><figcaption></figcaption></figure>
-
 ### What is a Browser Extension?
 
 Browser extensions are software programs that can be added to a browser to introduce new features and functionality.  Extensions can target specific URLs or all URLs.   Once a developer has published their extension code, it is available in a store to easily add to the browser. &#x20;

@@ -1,5 +1,7 @@
 # Create a Chrome Extension
 
+<figure><img src="../.gitbook/assets/link-report.gif" alt=""><figcaption></figcaption></figure>
+
 We'll create an extension named **Link Reveal**.  It will be activated by clicking on an icon to the right of the Chrome address bar.  The red hook is the icon that will be associated with this extension.
 
 <div data-full-width="false">
