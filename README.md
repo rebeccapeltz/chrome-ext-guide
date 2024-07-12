@@ -1,4 +1,12 @@
+---
+description: >-
+  Follow along with the Design, Creation and Publishing of  a Chrome Browser
+  Extension name **Link Reveal** that analyzes and reports on page links.
+---
+
 # Introduction
+
+<figure><img src=".gitbook/assets/link-report.gif" alt=""><figcaption><p>Current Page Link Analysis Report</p></figcaption></figure>
 
 ### What is a Browser Extension?
 
