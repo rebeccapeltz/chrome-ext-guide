@@ -6,6 +6,63 @@ description: >-
 
 # Code the Extension
 
+### popup.html
+
+The HTML for the popup provides the structure for the final report.  A `popup.css` and a `popup.js` are linked to this file.  The `popup.js` code will add more elements to this document based on data from the content script.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Link Reveal</title>
+    <link href="popup.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="autoscroll">
+        <h1>Current Web Page Link Analysis</h1>
+        <div id="nodata-msg" class=" hide">
+            <h2 class="nodata">There are no anchor tags on this page.</h2>
+            <p>Try a page refresh in case the page was put to sleep. </p>
+        </div>
+        <table id="status-def" class="fixed">
+            <caption><b>Scroll</b> to view red/green status</caption>
+            <tr>
+                <td><b>Green status:</b></td>
+                <td><b>1:</b> <span class="info-button-green">href</span></td>
+                <td><b>2:</b> <span class="info-button-green">no href:javascript</span></td>
+                <td><b>3:</b> <span class="info-button-green">no onclick</span></td>
+                <td><b>4:</b> <span class="info-button-green">href=url</span></td>
+                <td><b>5:</b> <span class="info-button-green">encrypted</span></td>
+                <td><b>6:</b> <span class="info-button-green">text</span></td>
+            </tr>
+        </table>
+    </div>
+    <div id="links" class="container">
+        <div class="grid header row">
+            <div class="data">Id </div>
+            <div class="data">Scheme </div>
+            <div class="data">Text</div>
+            <div class="data">Anchor Element</div>
+            <div class="data">URL</div>
+            <div class="data">1</div>
+            <div class="data">2</div>
+            <div class="data">3</div>
+            <div class="data">4</div>
+            <div class="data">5</div>
+            <div class="data">6</div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
+```
+
 ### popup.js
 
 ```javascript
@@ -153,62 +210,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 ```
 
-### popup.html
 
-The HTML for the popup provides the structure for the final report.  A `popup.css` and a `popup.js` are linked to this file.  The `popup.js` code will add more elements to this document based on data from the content script.
-
-```html
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Link Reveal</title>
-    <link href="popup.css" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-    <div class="autoscroll">
-        <h1>Current Web Page Link Analysis</h1>
-        <div id="nodata-msg" class=" hide">
-            <h2 class="nodata">There are no anchor tags on this page.</h2>
-            <p>Try a page refresh in case the page was put to sleep. </p>
-        </div>
-        <table id="status-def" class="fixed">
-            <caption><b>Scroll</b> to view red/green status</caption>
-            <tr>
-                <td><b>Green status:</b></td>
-                <td><b>1:</b> <span class="info-button-green">href</span></td>
-                <td><b>2:</b> <span class="info-button-green">no href:javascript</span></td>
-                <td><b>3:</b> <span class="info-button-green">no onclick</span></td>
-                <td><b>4:</b> <span class="info-button-green">href=url</span></td>
-                <td><b>5:</b> <span class="info-button-green">encrypted</span></td>
-                <td><b>6:</b> <span class="info-button-green">text</span></td>
-            </tr>
-        </table>
-    </div>
-    <div id="links" class="container">
-        <div class="grid header row">
-            <div class="data">Id </div>
-            <div class="data">Scheme </div>
-            <div class="data">Text</div>
-            <div class="data">Anchor Element</div>
-            <div class="data">URL</div>
-            <div class="data">1</div>
-            <div class="data">2</div>
-            <div class="data">3</div>
-            <div class="data">4</div>
-            <div class="data">5</div>
-            <div class="data">6</div>
-        </div>
-    </div>
-    <script src="popup.js"></script>
-</body>
-
-</html>
-```
 
 
 
