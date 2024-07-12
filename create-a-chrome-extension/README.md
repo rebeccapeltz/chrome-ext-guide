@@ -1,6 +1,12 @@
+---
+description: >-
+  The **LInk Reveal** extension is shown below. Click on an icon to view a
+  report than reveals links with analysis of their attributes.
+---
+
 # Create a Chrome Extension
 
-<figure><img src="../.gitbook/assets/link-report.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/link-report.gif" alt=""><figcaption><p>Link Reveal Chrome Extension</p></figcaption></figure>
 
 We'll create an extension named **Link Reveal**.  It will be activated by clicking on an icon to the right of the Chrome address bar.  The red hook is the icon that will be associated with this extension.
 
