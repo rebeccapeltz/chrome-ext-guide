@@ -6,7 +6,7 @@ description: >-
 
 # Introduction
 
-<figure><img src=".gitbook/assets/link-report.gif" alt=""><figcaption><p>Current Page Link Analysis Report</p></figcaption></figure>
+<figure><img src=".gitbook/assets/link-report.gif" alt=""><figcaption></figcaption></figure>
 
 ### What is a Browser Extension?
 
