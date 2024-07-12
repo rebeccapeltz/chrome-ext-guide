@@ -1,7 +1,7 @@
 # Resources
 
-### Publish
+### [Link Reveal Extension In Chrome Web Store](https://chromewebstore.google.com/detail/link-reveal/fmmmcdmfaadidngnfnidhlmpgigmnhjh)
 
-{% embed url="https://developer.chrome.com/docs/webstore/publish" %}
-Create an account and manage extensions on the dashboard
-{% endembed %}
+### [Link Reveal Source Code](https://github.com/rebeccapeltz/link-reveal-ext)
+
+### [**Google Documentation for Creating and Publishing a Chrome Extension**](https://developer.chrome.com/docs/extensions)
