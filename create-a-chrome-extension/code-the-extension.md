@@ -258,7 +258,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 ```
 {% endcode %}
 
+### Debugging popup.js and content.js
 
+Use the Chrome Dev tools inspector to debug both of the JavaScript files.  Start by adding `console.log` statements to the code.  The logs for the popup code are in the inspector for the popup.html page.  The logs for the content code are in the inspector for the current web page.  If a more detailed code walkthrough is needed, you can set breakpoints or the `debugger` command in the code.
 
 
 
