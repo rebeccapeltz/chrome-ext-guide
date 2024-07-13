@@ -8,7 +8,18 @@ description: >-
 
 ### popup.html
 
-The HTML for the popup provides the structure for the final report.  A `popup.css` and a `popup.js` are linked to this file.  The `popup.js` code will add more elements to this document based on data from the content script.
+
+
+```mermaid
+sequenceDiagram
+    autonumber
+    popup.html->>popup.js: DOM Content Loaded
+ 
+```
+
+The HTML for the popup provides the structure for the final report.  The files `popup.css` and  `popup.js` are linked to this file to give style and JavaScript.  The `popup.js` code will add more elements to this document based on data from the content script and is the file used to configure the manifest action. &#x20;
+
+When the user clicks the extension icon, the HTML is loaded, and a DOMContentloaded event is fired.&#x20;
 
 ```html
 <!DOCTYPE html>
@@ -65,6 +76,25 @@ The HTML for the popup provides the structure for the final report.  A `popup.cs
 
 ### popup.js
 
+The extension window popup will request content from the extension `content.js` , which will be injected into the current web page.  The `popup.js` will request content from the inject content code.  It does this in line 79 with `chrome.tabs.query`. This query returns a number that identifies the tab.  In line 86, a message is sent that Chrome passes to the content code.  There are three arguments in the request:
+
+1. tab id
+2. an object that informs the receiver where it comes from and the subject &#x20;
+3. a reference to the function `setDOMInfo` defined on line 63
+
+
+
+```mermaid
+sequenceDiagram
+    autonumber
+    popup.js->>content.js: get DOM info from web page
+    Note over popup.js,content.js: popup.js sends reference to function setDOMInfo
+   
+```
+
+
+
+{% code lineNumbers="true" %}
 ```javascript
 const isUnencrypted = (scheme) => {
   return scheme.toLowerCase() == "http";
@@ -160,10 +190,27 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 });
 ```
+{% endcode %}
 
 ### content.js
 
-The injected code gets all the anchor elements and extracts the scheme, URL, and the full anchor element as a string.  It then does additional processing on each link to look for possible issues like JavaScript being executed in an onclick, no href, or an encrypted URL.  These could all be indicators that there is a possible issue with the link.
+The injected code gets all the anchor elements and extracts the scheme, URL, and the full anchor element as a string. It then does additional processing on each link to look for possible issues, such as JavaScript being executed in an onclick, no href, or an encrypted URL. These could all be indicators that there is a potential issue with the link. &#x20;
+
+The processing in the content script reads a Nodelist of anchor elements from the DOM.  It then loads attributes and analysis into an array of objects.  This array is returned to the `popup.js` by calling the `setDOMInfo` function with the array of objects.
+
+The `setDOMInfo` then calls a functions which use the data to build out a report for the user that is displayed in `popup.html`.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    Note over popup.js,content.js: popup.js sends reference to function setDOMInfo
+    content.js->>popup.js: return array of links with attribute data
+    Note over popup.js,content.js: return data as an argument in setDOMInfo
+    loop Process DOM Info 
+        popup.js-->popup.js: Process DOM data from user page
+    end
+    popup.js->>popup.html: Build Report  
+```
 
 ```javascript
 // Listen for messages from the popup.
