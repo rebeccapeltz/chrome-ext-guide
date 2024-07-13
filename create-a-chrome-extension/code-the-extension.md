@@ -194,16 +194,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
 ### content.js
 
-The injected code gets all the anchor elements and extracts the scheme, URL, and the full anchor element as a string. It then does additional processing on each link to look for possible issues, such as JavaScript being executed in an onclick, no href, or an encrypted URL. These could all be indicators that there is a potential issue with the link. &#x20;
+The injected code gets all the anchor elements and extracts the scheme, URL, and the entire anchor element as a string. It then does additional processing on each link to look for possible issues, such as JavaScript being executed in an onclick, no href, or an encrypted URL. These could all be indicators that there is a potential issue with the link. &#x20;
 
-The processing in the content script reads a Nodelist of anchor elements from the DOM.  It then loads attributes and analysis into an array of objects.  This array is returned to the `popup.js` by calling the `setDOMInfo` function with the array of objects.
+The processing in the content script reads a Nodelist of anchor elements from the DOM.  It then loads attributes and analysis into an array of objects.  This array is returned to the `popup.js` by calling the `setDOMInfo` function with the Array of objects.  The call is issued on line 39 with the `sendResponse` function.  If no anchor elements are found, the sendReponse notifies the calling function that nothing is found by returning `undefined` on line 10.
 
-The `setDOMInfo` then calls a functions which use the data to build out a report for the user that is displayed in `popup.html`.
+The `setDOMInfo` then calls a function that uses the data to build out a report for the user that is displayed in `popup.html`.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    Note over popup.js,content.js: popup.js sends reference to function setDOMInfo
     content.js->>popup.js: return array of links with attribute data
     Note over popup.js,content.js: return data as an argument in setDOMInfo
     loop Process DOM Info 
@@ -212,6 +211,7 @@ sequenceDiagram
     popup.js->>popup.html: Build Report  
 ```
 
+{% code lineNumbers="true" %}
 ```javascript
 // Listen for messages from the popup.
 // params are request object showing where from and subject, sender knows the tab if needed,
@@ -256,6 +256,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 ```
+{% endcode %}
 
 
 
